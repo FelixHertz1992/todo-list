@@ -2,6 +2,23 @@ const form = document.querySelector("#todo-form");
 const input = document.querySelector("#todo-input");
 const list = document.querySelector("#todo-list");
 const clearButton = document.querySelector("#clear-button");
+const themeToggle = document.querySelector("#theme-toggle");
+
+function setTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  themeToggle.textContent = isDark ? "☀" : "☾";
+  themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+}
+
+setTheme(localStorage.getItem("todo-theme") || "light");
+
+themeToggle.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  setTheme(theme);
+  localStorage.setItem("todo-theme", theme);
+});
 
 let todos = JSON.parse(localStorage.getItem("handwritten-todos")) || [
   { text: "buy coffee", done: false },

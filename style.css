@@ -3,6 +3,22 @@
   --paper: #fbfaf4;
   --line: #aac7c8;
   --red: #dc7773;
+  --muted: #77736b;
+  --rule: #8b8b82;
+  --border: #d5d2c7;
+  --outside: #dfe2dc;
+  --shadow: rgba(63, 66, 61, 0.16);
+}
+
+:root[data-theme="dark"] {
+  --ink: #e8e4da;
+  --paper: #292b2c;
+  --line: #465454;
+  --muted: #aaa69c;
+  --rule: #89877f;
+  --border: #454747;
+  --outside: #1d2021;
+  --shadow: rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -16,7 +32,7 @@ body {
   color: var(--ink);
   background:
     radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.04) 0 1px, transparent 1.5px),
-    #dfe2dc;
+    var(--outside);
   background-size: 19px 19px, auto;
   font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
 }
@@ -36,9 +52,9 @@ body {
     ),
     linear-gradient(90deg, transparent 0 32px, rgba(220, 119, 115, 0.55) 32px 34px, transparent 34px),
     var(--paper);
-  border: 1px solid #d5d2c7;
+  border: 1px solid var(--border);
   border-radius: 3px 8px 7px 2px;
-  box-shadow: 5px 7px 18px rgba(63, 66, 61, 0.16);
+  box-shadow: 5px 7px 18px var(--shadow);
   transform: rotate(-0.18deg);
 }
 
@@ -48,11 +64,26 @@ header {
   transform: rotate(0.12deg);
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .date {
   margin: 0 0 -4px;
-  color: #77736b;
+  color: var(--muted);
   font-size: 12px;
   transform: rotate(-1deg);
+}
+
+#theme-toggle {
+  width: 28px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  font-size: 18px;
+  line-height: 1;
 }
 
 h1 {
@@ -75,7 +106,7 @@ h1 {
   min-width: 0;
   height: 34px;
   border: 0;
-  border-bottom: 1.5px dashed #8b8b82;
+  border-bottom: 1.5px dashed var(--rule);
   border-radius: 0;
   outline: none;
   background: transparent;
@@ -91,7 +122,7 @@ h1 {
 button {
   color: var(--ink);
   background: transparent;
-  border: 1px solid #77766f;
+  border: 1px solid var(--rule);
   cursor: pointer;
   font: 14px "Comic Sans MS", "Trebuchet MS", sans-serif;
 }
@@ -141,7 +172,7 @@ button:hover {
 }
 
 .todo.done span {
-  color: #77766f;
+  color: var(--muted);
   text-decoration: line-through;
   text-decoration-thickness: 1.5px;
 }
@@ -151,7 +182,7 @@ button:hover {
   height: 22px;
   padding: 0;
   border: 0;
-  color: #77766f;
+  color: var(--muted);
   font-size: 18px;
   line-height: 18px;
   opacity: 0.7;
@@ -162,7 +193,7 @@ button:hover {
   margin-left: 24px;
   padding: 2px 7px 3px;
   border: 0;
-  border-bottom: 1px solid #77766f;
+  border-bottom: 1px solid var(--rule);
   font-size: 13px;
   transform: rotate(-0.5deg);
 }
